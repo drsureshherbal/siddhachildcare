@@ -1,0 +1,1 @@
+<?php require_login();require_once __DIR__.'/../app/helpers.php';verify_csrf();$cid=(int)($_POST['content_id']??0);$s=db()->prepare('INSERT OR IGNORE INTO saved(user_id,content_id) VALUES(?,?)');$s->execute([user()['id'],$cid]);header('Location: '.($_SERVER['HTTP_REFERER']??'../saved.php'));exit;
